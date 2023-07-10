@@ -1,0 +1,19 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scraped Ads</title>
+</head>
+<body>
+    <h1>Scraped Ads</h1>
+    <ul>
+    {% for ad in ads %}
+        <li>
+            <h2>{{ ad[0] }}</h2>
+            <img src="{{ ad[1] }}" alt="{{ ad[0] }}"/>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

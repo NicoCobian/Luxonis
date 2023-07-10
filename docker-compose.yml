@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  scraper:
+    build: .
+    command: scrapy crawl sreality_spider -o ads.csv
+    volumes:
+      - ./sreality_scraper:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Maradona1!
+
+  server:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
